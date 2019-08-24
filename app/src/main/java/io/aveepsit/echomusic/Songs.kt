@@ -4,6 +4,21 @@ import android.os.Parcel
 import android.os.Parcelable
 
 public class Songs(var songID: Long, var songTitle: String, var artist: String, var songData: String, var dateAdded: Long) : Parcelable {
+
+    object Statified {
+        var nameComparatot: Comparator<Songs> = Comparator<Songs> { song1, song2 ->
+            val songOne = song1.songTitle.toUpperCase()
+            val songTwo = song2.songTitle.toUpperCase()
+            songOne.compareTo(songTwo)
+        }
+
+        var dateComaparator: Comparator<Songs> = Comparator<Songs> { song1, song2 ->
+            var songOne = song1.dateAdded.toDouble()
+            var songTwo = song2.dateAdded.toDouble()
+            songTwo.compareTo(songOne)
+        }
+    }
+
     constructor(parcel: Parcel) : this(
         parcel.readLong(),
         parcel.readString(),

@@ -12,10 +12,9 @@ import android.widget.TextView
 import android.widget.Toast
 import io.aveepsit.echomusic.R
 import io.aveepsit.echomusic.Songs
-import io.aveepsit.echomusic.activities.MainActivity
 import io.aveepsit.echomusic.fragments.SongPlayingFragment
 
-class MainScreenAdapter(_songDetails: ArrayList<Songs>, _context: Context) : RecyclerView.Adapter<MainScreenAdapter.MyViewHolder>() {
+class FavoriteAdapter(_songDetails: ArrayList<Songs>, _context: Context) : RecyclerView.Adapter<FavoriteAdapter.MyViewHolder>() {
 
     var songDetails : ArrayList<Songs>? = null
     var mContext : Context? = null
@@ -56,8 +55,8 @@ class MainScreenAdapter(_songDetails: ArrayList<Songs>, _context: Context) : Rec
             songPlayingFragment.setArguments(args)
             (mContext as FragmentActivity).supportFragmentManager
                 .beginTransaction()
-                .addToBackStack("SongPlayingFragment")
                 .replace(R.id.details_fragment, songPlayingFragment)
+                .addToBackStack("SongPlayingFragmentFavorite")
                 .commit()
         })
     }
